@@ -7,7 +7,7 @@ ob_start();
     <a class="validButton" href="<?= URL ?>delete">Supprimer un utilisateur</a>
 </div>
 <div class="readButtons">
-    <a class="validButton" href="<?= URL ?>?">Ajouter un jeu</a>
+    <a class="validButton" href="<?= URL ?>games">Ajouter un jeu</a>
 </div>
 
 <h2 class="titreRead">Espace Administrateur</h2>
@@ -39,7 +39,7 @@ ob_start();
             <td><?= htmlspecialchars($user['u_gender'], ENT_QUOTES, 'UTF-8'); ?></td>
             <td><?= htmlspecialchars($user['u_phone'] ?? 'Téléphone inconnu', ENT_QUOTES, 'UTF-8'); ?></td>
             <td><?= htmlspecialchars($user['role_description'] ?? 'Rôle inconnu', ENT_QUOTES, 'UTF-8'); ?></td>
-            <td><a href="<?= URL ?>update/<?= htmlspecialchars($user['id_user'], ENT_QUOTES, 'UTF-8'); ?>">MODIFIER</a></td>
+            <td><a href="<?= URL ?>update/<?= htmlspecialchars($user['id_user'], ENT_QUOTES, 'UTF-8'); ?>" class="btn-modifier">MODIFIER</a></td>
         </tr>
     <?php endforeach; ?>
 </table>

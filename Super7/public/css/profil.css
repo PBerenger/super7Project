@@ -63,25 +63,46 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-#profilPage .profilContainer-right .rightBox {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-}
-#profilPage .profilContainer-right .rightBox .resultsComp,
-#profilPage .profilContainer-right .rightBox .graphRad {
-  text-align: justify;
-}
 #profilPage .profilContainer-right h2 {
   font-size: 24px;
   color: #333;
   margin-bottom: 10px;
 }
+#profilPage .profilContainer-right .rightBox {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+#profilPage .profilContainer-right .rightBox .hidden {
+  display: none;
+}
+#profilPage .profilContainer-right .rightBox .graphRad {
+  text-align: justify;
+}
+#profilPage .profilContainer-right .graphP {
+  font-size: 12px;
+  font-family: var(--fontTexteHeavy);
+  text-align: center;
+  line-height: 20px;
+  user-select: none;
+}
+#profilPage .profilContainer-right .graphLink {
+  background-color: var(--colorPrincipale);
+  color: var(--colorBackground0);
+  padding: 5px 10px;
+  text-decoration: none;
+}
+#profilPage .profilContainer-right .graphLink:hover {
+  background-color: var(--colorSecondaire);
+}
 #profilPage .profilContainer-right .resultsComp {
+  background-color: var(--colorTertiaire);
+  border-radius: 25px;
   font-family: var(--fontTexteLight);
+  color: var(--colorBackground0);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 }
 #profilPage .profilContainer-right .radarChart {
   width: 600px;
@@ -103,4 +124,7 @@
 }
 #profilPage .profilContainer-right .retourTQ a:hover {
   background-color: var(--colorSecondaire);
+}
+.hidden {
+  display: none;
 }

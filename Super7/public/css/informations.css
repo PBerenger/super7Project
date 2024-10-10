@@ -1,12 +1,13 @@
 @import 'style.css';
 .titreInfos {
-  font-size: 8em;
+  font-size: 14em;
   text-align: center;
   transition: font-size 0.3s ease;
   user-select: none;
 }
 .selectInfos {
   margin-bottom: 600px;
+  user-select: none;
 }
 .resAll {
   height: 600px;

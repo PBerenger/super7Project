@@ -35,7 +35,7 @@ if (isset($_SESSION['id_user']) && !isset($_SESSION['alert_show'])) {
     <link rel="stylesheet" href="../public/css/questionnaire.css">
     <link rel="stylesheet" href="../public/css/traitementQuestionnaire.css">
     <link rel="stylesheet" href="../public/css/profil.css">
-    <title>Super 7 V0.2</title>
+    <title>Super 7 V1</title>
 </head>
 
 <body>

@@ -31,8 +31,16 @@ class UserController
     public function UpdateForm($id)
     {
         $utilisateur = $this->userManager->getUserById($id);
+
+        // Vérifie si l'utilisateur existe avant de charger la vue
+        if (!$utilisateur) {
+            echo "Utilisateur non trouvé.";
+            return; // ou redirige vers une autre page
+        }
+
         require_once __DIR__ . '../../views/update.view.php';
     }
+
 
     public function profilDisplay($id)
     {
@@ -73,7 +81,7 @@ class UserController
 
         if ($pwd !== $confirm_pwd) {
             $message = "Les mots de passe ne correspondent pas.";
-            header('Location: /add');
+            header('Location: /update');
             echo $message;
             return;
         }
@@ -85,15 +93,26 @@ class UserController
         if (isset($files['image']) && $files['image']['error'] === UPLOAD_ERR_OK) {
             $tmp_name = $files['image']['tmp_name'];
             $name = basename($files['image']['name']);
-            if (move_uploaded_file($tmp_name, "./public/img/$name")) {
-                $nomImage = $name;
-                $message = 'Image uploadée avec succès.';
+            $uploadFile = "./public/img/$name";
+
+            // Vérifie le type MIME
+            $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            $fileInfo = getimagesize($tmp_name);
+
+            if (in_array($fileInfo['mime'], $allowedMimeTypes)) {
+                if (move_uploaded_file($tmp_name, $uploadFile)) {
+                    $nomImage = $name;
+                    $message = 'Image uploadée avec succès.';
+                } else {
+                    $message = 'Erreur lors de l\'upload de l\'image.';
+                }
             } else {
-                $message = 'Erreur lors de l\'upload de l\'image.';
+                $message = 'Type de fichier non autorisé.';
             }
-        } else if (isset($files['image']) && $files['image']['error'] !== UPLOAD_ERR_NO_FILE) {
+        } else if (isset($files['image'])) {
             $message = 'Erreur lors de l\'upload de l\'image.';
         }
+
 
         $message = $this->userManager->updateUser($id, $nom, $prenom, $email, $dateNaissance, $genre, $telephone, $role, $nomImage, $hashedPwd);
         $this->listUsers();
@@ -146,17 +165,28 @@ class UserController
 
         // Gestion de l'upload de l'image
         if (isset($files['image']) && $files['image']['error'] === UPLOAD_ERR_OK) {
-            // récupère le chemin de l'image
             $tmp_name = $files['image']['tmp_name'];
-            // récupère juste le nom de l'image
-            $nomImage = basename($files['image']['name']);
-            // déplace le téléchargement vers le répertoire cible
-            if (!move_uploaded_file($tmp_name, "./public/img/$nomImage")) {
-                $message = "Erreur lors du téléchargement de l'image.";
-                echo $message;
-                return;
+            $name = basename($files['image']['name']);
+            $uploadFile = "./public/img/$name";
+
+            // Vérifie le type MIME
+            $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            $fileInfo = getimagesize($tmp_name);
+
+            if (in_array($fileInfo['mime'], $allowedMimeTypes)) {
+                if (move_uploaded_file($tmp_name, $uploadFile)) {
+                    $nomImage = $name;
+                    $message = 'Image uploadée avec succès.';
+                } else {
+                    $message = 'Erreur lors de l\'upload de l\'image.';
+                }
+            } else {
+                $message = 'Type de fichier non autorisé.';
             }
+        } else if (isset($files['image'])) {
+            $message = 'Erreur lors de l\'upload de l\'image.';
         }
+
 
         $message = $this->userManager->addUser($nom, $prenom, $email, $dateNaissance, $genre, $telephone, $role, $nomImage, $hashedPwd);
         // Ajoutez une vérification pour $message si nécessaire

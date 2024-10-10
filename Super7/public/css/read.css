@@ -67,3 +67,20 @@
   color: #333;
   margin-top: 10px;
 }
+.btn-modifier {
+  background-color: var(--colorPrincipale);
+  /* Assurez-vous que cette variable est définie */
+  color: var(--colorBackground0);
+  /* Assurez-vous que cette variable est définie */
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+.btn-modifier:hover {
+  background-color: var(--colorBackground1);
+  /* Assurez-vous que cette variable est définie */
+  color: var(--colorBackground0);
+  /* Cette variable doit également être définie */
+  text-decoration: none;
+}

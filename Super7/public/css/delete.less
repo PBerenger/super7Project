@@ -3,3 +3,95 @@
 // =======================================
 // =======================================
 // DELETE
+
+.titreDel {
+    text-align: center;
+    font-size: 4em;
+    user-select: none;
+}
+
+.form-container-Del {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+
+    form {
+
+        .inputBsSupp {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 200px;
+            left: 10px;
+            z-index: 1000;
+
+            input[type="submit"] {
+                border: 2px solid var(--colorBackground1);
+                text-align: center;
+                border: none;
+                width: 95%;
+                height: 40px;
+                padding: 12px 20px;
+                background-color: var(--colorSecondaire);
+                color: var(--colorBackground0);
+                font-family: var(--fontTexteHeavy);
+                transition: background-color 0.3s ease;
+
+                &:hover {
+                    background-color: var(--colorInvalid);
+                }
+            }
+
+            button.deselectButton {
+                border: 2px solid var(--colorBackground1);
+                text-align: center;
+                border: none;
+                width: 95%;
+                height: 40px;
+                padding: 12px 20px;
+                background-color: var(--colorSecondaire);
+                color: var(--colorBackground0);
+                font-family: var(--fontTexteHeavy);
+                transition: background-color 0.3s ease;
+
+                &:hover {
+                    background-color: var(--colorValid);
+                }
+            }
+        }
+
+        .users-grid {
+            width: 80%;
+            display: grid;
+            margin: 0 auto;
+            flex-grow: 1;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+
+            .user-checkbox-container {
+                display: block;
+
+                border-radius: 5px;
+            }
+        }
+
+        .user-row {
+            width: 289px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .user-row:hover {
+            background-color: #f0f0f0;
+            color: #333;
+            cursor: pointer;
+        }
+    }
+}

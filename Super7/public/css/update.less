@@ -1,0 +1,132 @@
+@import 'style.css';
+
+// =======================================
+// =======================================
+// MODIFIER
+
+
+.titreUpdate {
+    color: red;
+    text-align: center;
+    font-size: 2.5em; // Ajuste la taille de police selon ton besoin
+    user-select: none;
+    margin-bottom: 20px;
+}
+
+.form-container-update {
+    background-color: var(--colorTertiaire);
+    display: flex;
+    justify-content: center;
+
+    form {
+        padding: 30px;
+        width: 100%;
+        max-width: 800px; // Largeur maximale du formulaire
+        display: grid;
+        text-align: center;
+        grid-template-columns: 1fr; // Une colonne pour le formulaire
+        gap: 20px; // Espace entre les éléments du formulaire
+        font-family: var(--fontTexteLight);
+        color: var(--colorBackground0);
+        font-size: 1em;
+
+        // =======================================
+        .inputBx {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            input[type='text'],
+            input[type='email'],
+            input[type='date'],
+            input[type='password'] {
+                width: 90%; // Largeur des champs
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                background-color: var(--colorSecondaire);
+                color: var(--colorBackground0);
+                font-size: 1em;
+
+                &::placeholder {
+                    color: var(--colorBackground0);
+                }
+
+                &:hover {
+                    border: 2px solid var(--colorBackground0);
+                }
+            }
+
+            input[type='file'] {
+                display: none; // Cacher l'input de type file
+            }
+
+            label {
+                cursor: pointer;
+                background-color: var(--colorSecondaire);
+                color: var(--colorBackground0);
+                padding: 10px;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+
+                &:hover {
+                    background-color: red;
+                }
+            }
+        }
+
+        // =======================================
+        select {
+            width: 95%;
+            height: 40px;
+            background-color: var(--colorSecondaire);
+            color: var(--colorBackground0);
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &:hover {
+                border: 2px solid var(--colorBackground0);
+            }
+        }
+
+        // =======================================
+        #mdpContainer {
+            background-color: rgba(255, 255, 255, 0.1); // Fond léger pour la vérification du mot de passe
+            padding: 15px;
+            border-radius: 5px;
+            text-align: left; // Aligner à gauche
+
+            h4 {
+                margin: 0;
+                font-weight: bold;
+            }
+
+            p {
+                margin: 5px 0;
+
+                &.invalid {
+                    color: red; // Indiquer les exigences non remplies
+                }
+            }
+        }
+
+        // =======================================
+        input[type='submit'] {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--colorSecondaire);
+            color: var(--colorBackground0);
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: red;
+            }
+        }
+    }
+}
